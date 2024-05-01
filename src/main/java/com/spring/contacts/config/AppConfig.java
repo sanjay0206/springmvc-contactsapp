@@ -14,8 +14,6 @@ import org.springframework.web.servlet.view.JstlView;
 @ComponentScan(basePackages = "com.spring.contacts")
 public class AppConfig implements WebMvcConfigurer {
 
-
-
     @Bean
     public InternalResourceViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();

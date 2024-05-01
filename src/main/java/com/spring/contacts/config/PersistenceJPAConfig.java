@@ -30,6 +30,7 @@ import java.util.Properties;
 @ComponentScan({"com.spring.contacts"})
 @EnableJpaRepositories(basePackages = "com.spring.contacts.repository")
 public class PersistenceJPAConfig {
+
     @Autowired
     private Environment env;
     @Autowired

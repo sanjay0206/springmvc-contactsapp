@@ -1,5 +1,6 @@
 package com.spring.contacts.config;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
@@ -7,6 +8,7 @@ import org.springframework.web.servlet.DispatcherServlet;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletRegistration;
 
+@Slf4j
 public class AppInitializer implements WebApplicationInitializer {
 
     @Override
@@ -20,7 +22,7 @@ public class AppInitializer implements WebApplicationInitializer {
         servlet.setLoadOnStartup(1);
         servlet.addMapping("/");
 
-        System.out.println("Servlet mappings::: " + servlet.getMappings());
+        log.info("Servlet mappings::: " + servlet.getMappings());
     }
 
 }

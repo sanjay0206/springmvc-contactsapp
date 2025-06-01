@@ -3,9 +3,11 @@ package com.spring.contacts.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 
+@ToString
 @Setter
 @Getter
 @NoArgsConstructor

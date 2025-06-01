@@ -2,7 +2,6 @@ package com.spring.contacts.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -32,12 +31,10 @@ public class AppConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/**")
-                .allowedOrigins("http://127.0.0.1:5500")
+                .allowedOrigins("*")
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
-                //  These headers can be included in the actual request from the client.
-                .allowedHeaders(HttpHeaders.AUTHORIZATION, HttpHeaders.COOKIE, HttpHeaders.CONTENT_TYPE,  HttpHeaders.ACCEPT)
-                // These headers will be exposed to the client in the response.
-                .exposedHeaders(HttpHeaders.AUTHORIZATION,  HttpHeaders.COOKIE, HttpHeaders.CONTENT_TYPE, HttpHeaders.LOCATION);
+                .allowedHeaders("*")
+                .exposedHeaders("*");
     }
 
     @Override

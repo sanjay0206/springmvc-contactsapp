@@ -14,8 +14,12 @@ import java.util.Optional;
 @Component
 public class ContactService {
 
+    private final ContactRepository contactRepository;
+
     @Autowired
-    private ContactRepository contactRepository;
+    public ContactService(ContactRepository contactRepository) {
+        this.contactRepository = contactRepository;
+    }
 
     public List<Contact> findAll() {
         return contactRepository.findAll();
@@ -31,6 +35,11 @@ public class ContactService {
 
     public void updateContact(int id, Contact contact) {
         Contact updatedContact = contactRepository.findById(id).orElse(null);
+
+        if (updatedContact == null) {
+            throw new IllegalStateException("Contact with id: " + id + " not found");
+        }
+
         updatedContact.setName(contact.getName());
         updatedContact.setEmail(contact.getEmail());
         updatedContact.setCountry(contact.getCountry());
@@ -40,5 +49,4 @@ public class ContactService {
     public void deleteById(int id) {
         contactRepository.deleteById(id);
     }
-
 }

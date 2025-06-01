@@ -1,8 +1,11 @@
 package com.spring.contacts.controller;
 
 
+import com.spring.contacts.config.ContactInitializer;
 import com.spring.contacts.model.Contact;
 import com.spring.contacts.service.ContactService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,11 +18,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/")
 public class ContactController {
 
+    private static final Logger logger = LoggerFactory.getLogger(ContactController.class);
     @Autowired
     private ContactService contactService;
 
     @RequestMapping("/read-contact")
     public String showReadContactPage(Model model) {
+        logger.info(model.toString());
         model.addAttribute("contacts", contactService.findAll());
         return "readcontact";
     }
@@ -54,5 +59,4 @@ public class ContactController {
         contactService.deleteById(id);
         return "redirect:/read-contact";
     }
-
 }

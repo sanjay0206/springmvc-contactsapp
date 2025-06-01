@@ -22,7 +22,6 @@ public class AppInitializer implements WebApplicationInitializer {
         servlet.setLoadOnStartup(1);
         servlet.addMapping("/");
 
-        log.info("Servlet mappings::: " + servlet.getMappings());
+        log.info("Servlet mappings::: {}", servlet.getMappings());
     }
-
 }
